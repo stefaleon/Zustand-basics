@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { Product } from "../components/productList";
+import { createSelectors } from "./create-selectors";
 
 type CartState = {
   cart: Product[];
@@ -23,3 +24,5 @@ export const useCartStore = create<CartState>((set) => ({
     })),
   clearCart: () => set({ cart: [] }),
 }));
+
+export const useCartStoreSelectors = createSelectors(useCartStore);

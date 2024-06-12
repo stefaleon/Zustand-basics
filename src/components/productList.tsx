@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useCartStore } from "../store/cartStore";
+import { useCartStoreSelectors } from "../store/cartStore";
 
 export type Product = {
   id: string;
@@ -11,8 +11,7 @@ type ProductListProps = {
 };
 
 const ProductList: FC<ProductListProps> = ({ products }) => {
-  const store = useCartStore();
-  const addToCart = (product: Product) => store.addToCart(product);
+  const addToCart = useCartStoreSelectors.use.addToCart();
 
   return (
     <div>

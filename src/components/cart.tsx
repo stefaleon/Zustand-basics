@@ -1,11 +1,11 @@
-import { useCartStore } from "../store/cartStore";
+import { useCartStoreSelectors } from "../store/cartStore";
 
 const Cart = () => {
-  const store = useCartStore();
+  
 
-  const cartItems = store.cart;
-  const removeItem = (id: string) => store.removeItem(id);
-  const clearCart = store.clearCart;
+  const cartItems = useCartStoreSelectors.use.cart();
+  const removeItem = useCartStoreSelectors.use.removeItem();
+  const clearCart = useCartStoreSelectors.use.clearCart();
 
   return (
     <div>
