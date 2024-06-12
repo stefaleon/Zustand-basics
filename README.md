@@ -1,3 +1,1 @@
-```
-npm install --save-dev prettier
-```
+Zustand store

@@ -1,10 +1,11 @@
-const Cart = () => {
-  const cartItems = [
-    { id: "1", name: "Mobile" },
-    { id: "2", name: "Tablet" },
-  ];
+import { useCartStore } from "../store/cartStore";
 
-  const removeItem = (id: string) => console.log("Removing ", id);
+const Cart = () => {
+  const store = useCartStore();
+
+  const cartItems = store.cart;
+  const removeItem = (id: string) => store.removeItem(id);
+  const clearCart = store.clearCart;
 
   return (
     <div>
@@ -15,6 +16,7 @@ const Cart = () => {
             {item.name} <button onClick={() => removeItem(item.id)}>-</button>
           </div>
         ))}
+      <button onClick={clearCart}>Clear Cart</button>
     </div>
   );
 };

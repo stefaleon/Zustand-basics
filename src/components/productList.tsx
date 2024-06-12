@@ -1,6 +1,7 @@
 import { FC } from "react";
+import { useCartStore } from "../store/cartStore";
 
-type Product = {
+export type Product = {
   id: string;
   name: string;
 };
@@ -10,7 +11,8 @@ type ProductListProps = {
 };
 
 const ProductList: FC<ProductListProps> = ({ products }) => {
-const addToCart = (id: string) => console.log("Adding ", id);
+  const store = useCartStore();
+  const addToCart = (product: Product) => store.addToCart(product);
 
   return (
     <div>
@@ -18,7 +20,7 @@ const addToCart = (id: string) => console.log("Adding ", id);
       {products &&
         products.map((p) => (
           <div key={p.id}>
-            {p.name} <button onClick={() => addToCart(p.id)}>+</button>
+            {p.name} <button onClick={() => addToCart(p)}>+</button>
           </div>
         ))}
     </div>
